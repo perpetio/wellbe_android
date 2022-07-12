@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.perpetio.well_be.ui.main.fragment.post.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_chat_message"
+            app:destination="@id/navigation_chat_message"
+            app:enterAnim="@anim/anim_slide_in"
+            app:exitAnim="@anim/anim_slide_out"
+            app:popEnterAnim="@anim/anim_slide_in"
+            app:popExitAnim="@anim/anim_slide_out"/>
+        <action
+            android:id="@+id/action_navigation_home_to_editPostFragment"
+            app:destination="@id/editPostFragment"
+            app:enterAnim="@anim/anim_slide_in"
+            app:exitAnim="@anim/anim_slide_out"
+            app:popEnterAnim="@anim/anim_slide_in"
+            app:popExitAnim="@anim/anim_slide_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chats"
+        android:name="com.perpetio.well_be.ui.main.fragment.chat.ChatListFragment"
+        android:label="ChatListFragment"
+        tools:layout="@layout/fragment_chat_list">
+        <action
+            android:id="@+id/action_navigation_chat_to_navigation_chat_message"
+            app:destination="@id/navigation_chat_message"
+            app:enterAnim="@anim/anim_slide_in"
+            app:exitAnim="@anim/anim_slide_out"
+            app:popEnterAnim="@anim/anim_slide_in"
+            app:popExitAnim="@anim/anim_slide_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chat_message"
+        android:name="com.perpetio.well_be.ui.main.fragment.chat.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="postModel"
+            app:argType="com.perpetio.well_be.dto.post.PostModel" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.perpetio.well_be.ui.main.fragment.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.perpetio.well_be.ui.main.fragment.profile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile"/>
+    <fragment
+        android:id="@+id/navigation_creation_post"
+        android:name="com.perpetio.well_be.ui.main.fragment.post.CreationPostFragment"
+        android:label="CreationPostFragment"
+        tools:layout="@layout/fragment_creation_post"/>
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.perpetio.well_be.ui.main.fragment.post.EditPostFragment"
+        android:label="EditPostFragment" >
+        <argument
+            android:name="post"
+            app:argType="com.perpetio.well_be.dto.post.PostModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_notification"
+        android:name="com.perpetio.well_be.ui.main.fragment.notification.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification"/>
+
+</navigation>
