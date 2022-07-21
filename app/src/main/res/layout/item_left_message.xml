@@ -21,9 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_msg_top"
         android:paddingHorizontal="10dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -59,7 +62,7 @@
 
         <TextView
             android:id="@+id/tvMessageContent"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
@@ -70,12 +73,12 @@
             android:textColor="@android:color/black"
             android:textSize="14sp"
             app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvUsername"
-            tools:text="Hello world! There is a long long long long long long long message." />
+            tools:text="Hello world" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
