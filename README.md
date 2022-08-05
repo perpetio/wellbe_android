@@ -18,6 +18,9 @@ You can check our [wellbe_backend](<https://github.com/perpetio/wellbe_backend>)
 
 ## See our tutorial posts:
 
+Part 1 - [How to Build an Android Wellness App with the Ktor Framework. Part I: Backend](https://perpet.io/blog/how-to-build-an-android-wellness-app-with-the-ktor-framework-part-i-backend/)
+Part 2 - [How to Build an Android Wellness App with the Ktor Framework. Part II: Android](https://perpet.io/blog/how-to-build-an-android-wellness-app-with-the-ktor-framework-part-ii-android/)
+
 ### Features include:
  - Registration/Login
  - Update user/avatar
