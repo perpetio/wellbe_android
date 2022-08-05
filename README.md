@@ -11,7 +11,7 @@
 
 ## Introduction
 
-### The WeeBe application is a social media-type app allows users to exchange various content connected with mental health, motivation, psychology, and improving oneself. Users can share posts with texts, images, and links, as well as discuss the content in the comment section
+### The WellBe application is a social media-type app allows users to exchange various content connected with mental health, motivation, psychology, and improving oneself. Users can share posts with texts, images, and links, as well as discuss the content in the comment section
 
 #### Working with HTTP requests and Websockets implemented via the Ktor Client framework. The goal of this project is to show that the Ktor framework allows having one ecosystem and one style throughout the project with Ktor on the backend. One developer with enough experience can easily create both the frontend and backend of the application.
 You can check our [wellbe_backend](<https://github.com/perpetio/wellbe_backend>) repo.
