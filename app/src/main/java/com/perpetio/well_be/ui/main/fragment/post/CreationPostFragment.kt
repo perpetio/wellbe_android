@@ -7,33 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.perpetio.well_be.R
 import com.perpetio.well_be.databinding.FragmentCreationPostBinding
 import com.perpetio.well_be.dto.post.CreateEditPostModel
+import com.perpetio.well_be.ui.main.BaseFragmentWithBinding
 import com.perpetio.well_be.ui.main.dialog.ColorCustomizationPickerDialog
 import com.perpetio.well_be.ui.main.viewmodel.PostViewModel
 import com.perpetio.well_be.utils.Sign
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class CreationPostFragment : Fragment() {
+class CreationPostFragment : BaseFragmentWithBinding<FragmentCreationPostBinding>() {
 
-    private var _binding: FragmentCreationPostBinding? = null
-    private val binding get() = _binding!!
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCreationPostBinding
+        get() = FragmentCreationPostBinding::inflate
+
     private val postViewModel: PostViewModel by sharedViewModel()
     private var pickedContainerColor: String = "#80D8FF"
     private var pickedSignColor: String = "#F4FF81"
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentCreationPostBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,10 +92,5 @@ class CreationPostFragment : Fragment() {
                 pickedSignColor
             )
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

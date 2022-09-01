@@ -7,38 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.perpetio.well_be.R
 import com.perpetio.well_be.databinding.FragmentEditPostBinding
 import com.perpetio.well_be.dto.post.CreateEditPostModel
 import com.perpetio.well_be.dto.post.PostModel
+import com.perpetio.well_be.ui.main.BaseFragmentWithBinding
 import com.perpetio.well_be.ui.main.dialog.ColorCustomizationPickerDialog
 import com.perpetio.well_be.ui.main.viewmodel.PostViewModel
 import com.perpetio.well_be.utils.Sign
 import com.perpetio.well_be.utils.ViewUtils.toEditable
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class EditPostFragment : Fragment() {
+class EditPostFragment : BaseFragmentWithBinding<FragmentEditPostBinding>() {
 
-    private var _binding: FragmentEditPostBinding? = null
-    private val binding get() = _binding!!
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentEditPostBinding
+        get() = FragmentEditPostBinding::inflate
+
     private val postViewModel: PostViewModel by sharedViewModel()
     private var pickedColor: String = "#81D4FA"
     private var pickedSignColor: String = "#F4FF81"
 
     private val currentPost: PostModel? by lazy {
         arguments?.let { EditPostFragmentArgs.fromBundle(it).post }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentEditPostBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -113,10 +105,5 @@ class EditPostFragment : Fragment() {
                 pickedSignColor
             )
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

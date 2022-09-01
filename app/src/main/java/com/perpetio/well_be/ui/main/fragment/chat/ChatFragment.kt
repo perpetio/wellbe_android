@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,29 +14,22 @@ import com.bumptech.glide.Glide
 import com.perpetio.well_be.R
 import com.perpetio.well_be.databinding.FragmentChatBinding
 import com.perpetio.well_be.dto.post.PostModel
+import com.perpetio.well_be.ui.main.BaseFragmentWithBinding
 import com.perpetio.well_be.ui.main.adapter.ChatAdapter
 import com.perpetio.well_be.ui.main.adapter.MarginItemDecoration
 import com.perpetio.well_be.ui.main.viewmodel.ChatViewModel
 import com.perpetio.well_be.utils.ViewUtils.toEditable
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ChatFragment : Fragment() {
+class ChatFragment : BaseFragmentWithBinding<FragmentChatBinding>() {
 
-    private var _binding: FragmentChatBinding? = null
-    private val binding get() = _binding!!
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentChatBinding
+        get() = FragmentChatBinding::inflate
+
     private val chatViewModel: ChatViewModel by sharedViewModel()
     private lateinit var chatAdapter: ChatAdapter
     private val currentRoom: PostModel by lazy {
         arguments?.let { ChatFragmentArgs.fromBundle(it).postModel }!!
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -112,10 +104,4 @@ class ChatFragment : Fragment() {
         super.onStop()
         chatViewModel.closeSession()
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

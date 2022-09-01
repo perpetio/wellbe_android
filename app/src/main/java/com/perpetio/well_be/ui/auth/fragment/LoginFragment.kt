@@ -43,7 +43,11 @@ class LoginFragment : Fragment() {
             val email = binding.viewInputEmail.etEmail.text.toString()
             if (password.isEmpty() || email.isEmpty()
             ) {
-                Toast.makeText(requireContext(), getString(R.string.please_fill_all_fields), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.please_fill_all_fields),
+                    Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
             }
             authViewModel.login(UserLoginModel(email, password))

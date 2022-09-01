@@ -14,6 +14,8 @@ class RestApiBuilder(
     private val am: AccountModule
 ) : ApiBuilder() {
 
+    private val BASE_URL =
+        "http://perpetioktorchat-env.eba-kpjjv4zz.eu-central-1.elasticbeanstalk.com"
     private val token get() = authToken(am.getToken())
 
     val api: HttpClient = HttpClient(Android) {
@@ -30,7 +32,7 @@ class RestApiBuilder(
             }
         }
         defaultRequest {
-            url("http://perpetioktorchat-env.eba-kpjjv4zz.eu-central-1.elasticbeanstalk.com")
+            url(BASE_URL)
             if (token.isNotEmpty()) {
                 header(AUTHORIZATION, token)
             }

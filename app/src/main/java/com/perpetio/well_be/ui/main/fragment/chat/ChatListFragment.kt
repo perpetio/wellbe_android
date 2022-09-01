@@ -4,33 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.perpetio.well_be.databinding.FragmentChatListBinding
 import com.perpetio.well_be.dto.post.PostModel
+import com.perpetio.well_be.ui.main.BaseFragmentWithBinding
 import com.perpetio.well_be.ui.main.adapter.ChatListAdapter
 import com.perpetio.well_be.ui.main.adapter.MarginItemDecoration
 import com.perpetio.well_be.ui.main.viewmodel.ChatViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ChatListFragment : Fragment(), ChatListAdapter.ChatListListener {
+class ChatListFragment : BaseFragmentWithBinding<FragmentChatListBinding>(),
+    ChatListAdapter.ChatListListener {
 
-    private var _binding: FragmentChatListBinding? = null
-    private val binding get() = _binding!!
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentChatListBinding
+        get() = FragmentChatListBinding::inflate
+
     private val chatViewModel: ChatViewModel by sharedViewModel()
     private val chatListAdapter: ChatListAdapter by lazy {
         ChatListAdapter(this)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentChatListBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,11 +40,6 @@ class ChatListFragment : Fragment(), ChatListAdapter.ChatListListener {
         chatViewModel.chats.observe(viewLifecycleOwner) { chats ->
             chatListAdapter.submitList(chats.map { it.copy() })
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onOpenChat(post: PostModel) {
