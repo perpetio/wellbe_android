@@ -11,12 +11,16 @@
 
 ## Introduction
 
-### The WeeBe application is a social media-type app allows users to exchange various content connected with mental health, motivation, psychology, and improving oneself. Users can share posts with texts, images, videos, and links, as well as discuss the content in the comment section
+### The WellBe application is a social media-type app allows users to exchange various content connected with mental health, motivation, psychology, and improving oneself. Users can share posts with texts, images, and links, as well as discuss the content in the comment section
 
-#### Work with Http requests, Websockets implemented on the Ktor Client framework. Goal of this project to show that we Ktor we have one ecosystem, one style with Ktor on the backend, and one person with enough experience could easuly create front-end and backend side.
+#### Working with HTTP requests and Websockets implemented via the Ktor Client framework. The goal of this project is to show that the Ktor framework allows having one ecosystem and one style throughout the project with Ktor on the backend. One developer with enough experience can easily create both the frontend and backend of the application.
 You can check our [wellbe_backend](<https://github.com/perpetio/wellbe_backend>) repo.
 
 ## See our tutorial posts:
+
+Part 1 - [How to Build an Android Wellness App with the Ktor Framework. Part I: Backend](https://perpet.io/blog/how-to-build-an-android-wellness-app-with-the-ktor-framework-part-i-backend/)
+
+Part 2 - [How to Build an Android Wellness App with the Ktor Framework. Part II: Android](https://perpet.io/blog/how-to-build-an-android-wellness-app-with-the-ktor-framework-part-ii-android/)
 
 ### Features include:
  - Registration/Login
